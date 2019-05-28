@@ -68,6 +68,7 @@ static struct {
 	int len;
 	int opt;
 } smk_mount_opts[] = {
+	{"smackfsdef", sizeof("smackfsdef") - 1, Opt_fsdefault},
 	A(fsdefault), A(fsfloor), A(fshat), A(fsroot), A(fstransmute)
 };
 #undef A
@@ -682,6 +683,7 @@ static int smack_fs_context_dup(struct fs_context *fc,
 }
 
 static const struct fs_parameter_spec smack_param_specs[] = {
+	fsparam_string("fsdef",		Opt_fsdefault),
 	fsparam_string("fsdefault",	Opt_fsdefault),
 	fsparam_string("fsfloor",	Opt_fsfloor),
 	fsparam_string("fshat",		Opt_fshat),
